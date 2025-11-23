@@ -1,12 +1,15 @@
 package org.example.app.lesson_2
+import java.util.Locale
 
 fun main() {
-    val numberOfStudent: Float = 4.0f
+    val numberOfStudent: Byte = 4
     val firstGrade: Byte = 3
     val secondGrade: Byte = 4
     val thirdGrade: Byte = 3
     val fourthGrade: Byte = 5
-    val sum: Int = firstGrade + secondGrade + thirdGrade + fourthGrade
+
+    val sum: Float = (firstGrade + secondGrade + thirdGrade + fourthGrade).toFloat()
     val averageGrade: Float = sum / numberOfStudent
-    println(averageGrade)
+
+    println(String.format(Locale.US, "%.2f", averageGrade))
 }
