@@ -5,7 +5,7 @@ fun main() {
     val age: Byte = 27
     val partOfDay: Float = 0.075f
     val second: Short = 6480
-    val partOfYear: Float = 2.0547945205479453E-4f
+    val partOfYear: Double = 2.0547945205479453E-4
     val apogee: Int = 327_000
 
     println(length)
