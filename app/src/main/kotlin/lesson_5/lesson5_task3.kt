@@ -8,13 +8,14 @@ fun main() {
     print("Введите второе число: ")
     val secondUserNumber = readln().toInt()
 
-    if ((firstUserNumber == firstWinnerNumber && secondUserNumber == secondWinnerNumber)
-        || (firstUserNumber == secondWinnerNumber && secondUserNumber == firstWinnerNumber)) {
+    if ((firstUserNumber == firstWinnerNumber && secondUserNumber == secondWinnerNumber) ||
+        (firstUserNumber == secondWinnerNumber && secondUserNumber == firstWinnerNumber)) {
         println("Поздравляем! Вы выиграли главный приз!")
     }
-    else if (firstUserNumber == firstWinnerNumber || firstUserNumber ==
-        secondWinnerNumber || secondUserNumber == firstWinnerNumber
-        || secondUserNumber == secondWinnerNumber) {
+    else if (firstUserNumber == firstWinnerNumber ||
+        firstUserNumber == secondWinnerNumber ||
+        secondUserNumber == firstWinnerNumber ||
+        secondUserNumber == secondWinnerNumber) {
         println("Вы выиграли утешительный приз!")
     }
     else {
