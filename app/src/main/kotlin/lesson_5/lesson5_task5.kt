@@ -3,7 +3,7 @@ package org.example.app.lesson_5
 fun main() {
     val winNumber = listOf((0..42).random(), (0..42).random(), (0..42).random())
     println("Введите 3 числа: ")
-    val userNumber = listOf(readln(), readln(), readln())
+    val userNumber = listOf(readln().toInt(), readln().toInt(), readln().toInt())
 
     val userWinNumber = winNumber.intersect(userNumber)
     when (userWinNumber.size) {
