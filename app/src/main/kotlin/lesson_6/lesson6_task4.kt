@@ -11,7 +11,7 @@ fun main() {
     } while (userNumber != winnerNumber && numberOfAttempts != 0)
 
     if (numberOfAttempts == 0) println("Неверно")
-    if (numberOfAttempts > 0) println("Это была великолепная игра")
+    if (numberOfAttempts > 0) println("Это была великолепная игра!")
 
     println("Было загадно число $winnerNumber")
 }
