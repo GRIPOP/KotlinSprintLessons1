@@ -5,28 +5,22 @@ const val CORRECT_PASSWORD = "admin"
 
 fun main() {
     var numberAttempts = 3
-    var correct = false
-    val result = {
-        do {
-            val firstNumber = (1..9).random()
-            val secondNumber = (1..9).random()
-            print("Чему равно $firstNumber + $secondNumber = ")
-            val userAnswer = readln().toInt()
-            if (userAnswer == firstNumber + secondNumber) {
-                println("Добро пожаловать!")
-                correct = true
-            }
-            numberAttempts--
-            if (numberAttempts == 0) {
-                println("Доступ запрещен")
-                correct = false
-            }
+    do {
+        val firstNumber = (1..9).random()
+        val secondNumber = (1..9).random()
+        print("Чему равно $firstNumber + $secondNumber = ")
+        val userAnswer = readln().toInt()
+        if (userAnswer == firstNumber + secondNumber) {
+            println("Добро пожаловать!")
+            break
         }
-            while (userAnswer != firstNumber + secondNumber && numberAttempts > 0)
-                correct
+        numberAttempts--
+        if (numberAttempts == 0) {
+            println("Доступ запрещен")
         }
-    val isSuccess = result()
-    if (isSuccess) {
+    } while (numberAttempts > 0)
+
+    if (numberAttempts > 0) {
         print("Введите логин: ")
         var userLogin = readln()
         print("Ввведите пароль: ")
@@ -39,7 +33,6 @@ fun main() {
             print("Ввведите пароль: ")
             userPassword = readln()
         }
-
         println("Авторизация прошла успешно")
     }
 }
