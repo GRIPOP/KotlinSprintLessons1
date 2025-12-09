@@ -1,7 +1,7 @@
 package org.example.app.lesson_6
 
-const val CORRECT_LOGIN = "admin"
-const val CORRECT_PASSWORD = "admin"
+const val CORRECT_LOGIN_ADMIN = "admin"
+const val CORRECT_PASSWORD_ADMIN = "admin"
 
 fun main() {
     var numberAttempts = 3
@@ -26,7 +26,7 @@ fun main() {
         print("Ввведите пароль: ")
         var userPassword = readln()
 
-        while (userLogin != CORRECT_LOGIN || userPassword != CORRECT_PASSWORD) {
+        while (userLogin != CORRECT_LOGIN_ADMIN || userPassword != CORRECT_PASSWORD_ADMIN) {
             println("Введите логин и пароль заново")
             print("Введите логин: ")
             userLogin = readln()
