@@ -6,13 +6,14 @@ fun main() {
     print("Какой ингредиент вы хотите заменить: ")
     val replaceableIngredient = readln()
 
-    if (replaceableIngredient !in listOfIngredients) {
+    val index = listOfIngredients.indexOf(replaceableIngredient)
+
+    if (index == -1) {
         println("Ингредиента $replaceableIngredient нет в списке")
     }
     else {
-        print("Введите ингредиент для замены: ")
         val ingredientToReplace = readln()
-        listOfIngredients[listOfIngredients.indexOf(replaceableIngredient)] = ingredientToReplace
+        listOfIngredients[index] = ingredientToReplace
         println("Готово! Вы сохранили следующий список: ${listOfIngredients.contentToString()}")
     }
 }
