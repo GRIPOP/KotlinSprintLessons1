@@ -1,7 +1,7 @@
 package org.example.app.lesson_9
 
 fun main() {
-    val ingredientOnePortion = intArrayOf(2, 50, 15)
+    val ingredientOnePortion = listOf(2, 50, 15)
     print("Укажите необходимое количество порций: ")
     val numberOfPortions = readln().toInt()
 
