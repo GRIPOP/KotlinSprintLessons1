@@ -2,19 +2,13 @@ package org.example.app.lesson_9
 
 fun main() {
     val numbers = 5
-    val emptyStrings = Array(numbers) { "" }
+    val ingredients = MutableList(numbers) { "" }
     println("Введите название ингредиентов")
 
     for (i in 0 until numbers) {
-        if (i == 0) {
-            val userIngredient = readln()
-            emptyStrings[i] = userIngredient
+        val userIngredient = readln()
+        ingredients[i] = userIngredient.lowercase()
         }
-        else {
-            val userIngredient = readln().lowercase()
-            emptyStrings[i] = userIngredient
-        }
-    }
 
-    println(emptyStrings.sorted().toSet().joinToString())
+    println(ingredients.toSet().sorted().joinToString().replaceFirstChar { it.uppercaseChar() })
 }
