@@ -15,6 +15,6 @@ fun main() {
     }
 }
 
-fun checkCorrectLoginAndPassword(userLogin: String): Boolean {
-    return (userLogin.length > MIN_CORRECT_LENGTH)
+fun checkCorrectLoginAndPassword(userLoginOrPassword: String): Boolean {
+    return (userLoginOrPassword.length > MIN_CORRECT_LENGTH)
 }
