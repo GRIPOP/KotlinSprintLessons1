@@ -7,7 +7,7 @@ fun main() {
     val userLogin = readln()
     print("Введите пароль: ")
     val userPassword = readln()
-    if (checkCorrectLogin(userLogin) && checkCorrectPassword(userPassword)) {
+    if (checkCorrectLoginAndPassword(userLogin) && checkCorrectLoginAndPassword(userPassword)) {
         println("Добро пожаловть!")
     }
     else {
@@ -15,10 +15,6 @@ fun main() {
     }
 }
 
-fun checkCorrectLogin(userLogin: String): Boolean {
+fun checkCorrectLoginAndPassword(userLogin: String): Boolean {
     return (userLogin.length > MIN_CORRECT_LENGTH)
-}
-
-fun checkCorrectPassword(userPassword: String) : Boolean {
-    return (userPassword.length > MIN_CORRECT_LENGTH)
 }
