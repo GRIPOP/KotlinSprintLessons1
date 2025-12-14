@@ -4,7 +4,7 @@ fun main() {
     val user: User2 = User2(1, "ranger", "user", "ranger@mail.ru")
     user.changePassword()
     user.writeBio()
-    user.userInfo()
+    user.printUserInfo()
 }
 
 class User2(
@@ -15,7 +15,7 @@ class User2(
     var bio: String = "",
 ) {
 
-    fun userInfo() {
+    fun printUserInfo() {
         println(id)
         println(login)
         println(password)
@@ -34,8 +34,7 @@ class User2(
             print("Введите новый пароль: ")
             password = readln()
             println("Пароль был изменён")
-        }
-        else {
+        } else {
             println("Введен неверный пароль")
         }
     }
