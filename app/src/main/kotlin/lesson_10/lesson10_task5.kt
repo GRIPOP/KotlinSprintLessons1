@@ -5,22 +5,26 @@ const val PASSWORD = "admin"
 const val LENGTH_TOKEN = 32
 
 fun main() {
+    println("Введите логин и пароль:")
     val resultGenerateToken = authorization(readln(), readln())
     getBasket(resultGenerateToken)
 }
 
 fun authorization(userLogin: String, userPassword: String): String? {
     if (userLogin == LOGIN && userPassword == PASSWORD) {
-        val char = ('a'..'z') + (0..9)
-        var token = ""
-        for (i in 1..LENGTH_TOKEN) {
-            token += char.random()
-        }
-        return token
+        return generateToken()
     }
     else {
         return null
     }
+}
+fun generateToken(): String {
+    val char = ('a'..'z') + (0..9)
+    var token = ""
+    for (i in 1..LENGTH_TOKEN) {
+        token += char.random()
+    }
+    return token
 }
 
 fun getBasket(token: String?) {
@@ -33,3 +37,4 @@ fun getBasket(token: String?) {
         println("Авторизация не выполнена!")
     }
 }
+
