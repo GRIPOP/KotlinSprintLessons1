@@ -12,9 +12,8 @@ class Room(
     val title: String,
     val participants: MutableList<Person> = mutableListOf(),
 ) {
-    fun addPerson(person: Person): MutableList<Person> {
+    fun addPerson(person: Person) {
         participants.add(person)
-        return (participants)
     }
 }
 
