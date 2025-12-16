@@ -1,10 +1,11 @@
 package org.example.app.lesson_11
 
 fun main() {
-    val room1 = Room("Flower", "Chat for talking about nothing",
-        mutableListOf(
-            Person(1, "satoshi", "Разговаривает", "https://example.com/avatar.png"),
-            Person(2, "bobr", "Выключен микрофон", "https://example.com/avatar2.png")))
+    val room1 = Room("Flower", "Chat for talking about nothing")
+    val person1 = Person(1, "satoshi", "Разговаривает", "https://example.com/avatar.png")
+    val person2 = Person(2, "bobr", "Выключен микрофон", "https://example.com/avatar2.png")
+    room1.addPerson(person1)
+    room1.addPerson(person2)
 }
 
 class Room(
@@ -15,11 +16,15 @@ class Room(
     fun addPerson(person: Person) {
         participants.add(person)
     }
+
+    fun updateStatus(person: Person) {
+        person.status = readln()
+    }
 }
 
 class Person(
     val id: Int,
     val name: String,
-    val status: String,
+    var status: String,
     val avatar: String,
 )
