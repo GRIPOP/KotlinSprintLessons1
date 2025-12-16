@@ -17,8 +17,8 @@ class Room(
         participants.add(person)
     }
 
-    fun updateStatus(person: Person) {
-        person.status = readln()
+    fun updateStatus(nameUser: Person, newStatus: String) {
+        nameUser.status = newStatus
     }
 }
 
