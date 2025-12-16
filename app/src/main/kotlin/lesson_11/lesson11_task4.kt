@@ -1,19 +1,23 @@
 package org.example.app.lesson_11
 
-fun main() {
-    val category: Category = Category("Бургеры")
-    val recept: Recept = Recept("Чизбургер")
-    val ingredients: Ingredients = Ingredients(listOf("Фарш", "Сыр", "Соус", "Булочка", "Помидор", "Огурец", "Лук"))
-}
+class Category(
+    val id: Int,
+    val name: String,
+    val picture: String,
+    val description: String,
+    val recipes: String,
+    )
 
-class Category(val nameCategory: String) {
+class Recipe(
+    val id: Int,
+    val name: String,
+    val picture: String,
+    val ingredients: List<String>,
+    val stepsOfCooking: String
+    )
 
-}
-
-class Recept(val nameRecept: String) {
-
-}
-
-class Ingredients(val ingredients: List<String>) {
-
-}
+class Ingredient(
+    val name: String,
+    val quantity: Int,
+    val units: String,
+    )
