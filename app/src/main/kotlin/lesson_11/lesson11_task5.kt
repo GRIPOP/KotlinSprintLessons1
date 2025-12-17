@@ -1,42 +1,50 @@
 package org.example.app.lesson_11
 
+import kotlin.time.measureTime
+
 fun main() {
+    val person = Forum()
+    val grisha = person.createNewUser("Grisha")
+    person.createNewMessage(grisha.userId, "Hello")
+    person.createNewMessage(grisha.userId, "I'm Grisha")
+
+    val ivan = person.createNewUser("Ivan")
+    person.createNewMessage(ivan.userId, "Hello")
+    person.createNewMessage(ivan.userId, "I'm Ivan")
+
+    person.printThread()
 
 }
 
 class Forum(
-    val membersForum: MutableList<MemberForum>,
-    //Тут вопрос по свойствам, их нужно добавлять просто логически?
-    // Например, в Форум может входить: Список людей, Все сообщения. А должны ли единичные экземпляры входить(имею ввиду один человек, одно сообщение)
-
-
+    val membersForum: MutableList<MemberForum> = mutableListOf(),
+    val messages: MutableList<MessageForum> = mutableListOf()
 ) {
-    class Builder(
-        val membersForum: MutableList<MemberForum>,
-        val user: MemberForum,
-        val messages: MutableList<String>,
-        //Тут вопрос по свойствам
-    ) {
 
-        fun createNewUser(user: MemberForum): MemberForum { //По поводу принимаемого параметра вроде тут верно?
-            val id = (1..1000).random() // Является ли это генерацией id для данной задачи?
-            membersForum.add(user)
-            return user
-        }
-        fun createNewMessage(id: MessageForum) {
-            if (user in membersForum) {
-                // тут не понимаю как вывести сообщение? Куда и к чему его привязать
-            }
-        }
+    var userIdCounter = 0
 
-        fun printThread(): MutableList<String> {
-            return messages
+    fun createNewUser(user: String): MemberForum {
+        val userNew = MemberForum(userIdCounter, user)
+        membersForum.add(userNew)
+        userIdCounter++
+        return userNew
+    }
+
+    fun createNewMessage(authorId: Int, message: String) {
+        val newMessage = MessageForum(authorId, message)
+        messages.add(newMessage)
+    }
+
+    fun printThread() {
+        for (message in messages) {
+            val author = membersForum.find { it.userId == message.authorId }
+            println("${author?.userName}: ${message.message} ")
         }
     }
 }
 
 class MemberForum(
-    var userId: Int,
+    val userId: Int,
     val userName: String,
 )
 
