@@ -1,6 +1,6 @@
 package org.example.app.lesson_12
 
-const val CONVERSION_TO_KELVINS = 273
+const val CONVERSION_TO_KELVINS_CELSIUS = 273
 
 fun main() {
 
@@ -13,8 +13,8 @@ class WeatherForTheDayV2(
     _nightTemperature: Int,
     _isBadWeather: Boolean,
 ) {
-    val dayTemperature: Int = _dayTemperature - CONVERSION_TO_KELVINS
-    val nightTemperature: Int = _nightTemperature - CONVERSION_TO_KELVINS
+    val dayTemperature: Int = _dayTemperature - CONVERSION_TO_KELVINS_CELSIUS
+    val nightTemperature: Int = _nightTemperature - CONVERSION_TO_KELVINS_CELSIUS
     val isBadWeather = _isBadWeather
 
     fun printWeather() {
