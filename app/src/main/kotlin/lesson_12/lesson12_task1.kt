@@ -20,7 +20,7 @@ class Weather() {
     var isBadWeather: Boolean = true
 
     fun printWeather() {
-        println("Погода днем: $dayTemperature")
+        println("Погода днём: $dayTemperature")
         println("Погода ночью: $nightTemperature")
         println(isBadWeather)
     }
