@@ -1,7 +1,5 @@
 package org.example.app.lesson_11
 
-import kotlin.time.measureTime
-
 fun main() {
     val person = Forum()
     val grisha = person.createNewUser("Grisha")
@@ -13,15 +11,14 @@ fun main() {
     person.createNewMessage(ivan.userId, "I'm Ivan")
 
     person.printThread()
-
 }
 
 class Forum(
-    val membersForum: MutableList<MemberForum> = mutableListOf(),
-    val messages: MutableList<MessageForum> = mutableListOf()
+    private val membersForum: MutableList<MemberForum> = mutableListOf(),
+    private val messages: MutableList<MessageForum> = mutableListOf()
 ) {
 
-    var userIdCounter = 0
+    private var userIdCounter = 0
 
     fun createNewUser(user: String): MemberForum {
         val userNew = MemberForum(userIdCounter, user)
@@ -31,14 +28,15 @@ class Forum(
     }
 
     fun createNewMessage(authorId: Int, message: String) {
-        val newMessage = MessageForum(authorId, message)
-        messages.add(newMessage)
+        if (membersForum.find { it.userId == authorId } != null) {
+            val newMessage = MessageForum(authorId, message)
+            messages.add(newMessage)
+        }
     }
 
     fun printThread() {
-        for (message in messages) {
-            val author = membersForum.find { it.userId == message.authorId }
-            println("${author?.userName}: ${message.message} ")
+        messages.forEach { message -> val author = membersForum.find { it.userId == message.authorId}
+            println("${author?.userName}: ${message.message}")
         }
     }
 }
