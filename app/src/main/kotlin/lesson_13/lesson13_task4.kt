@@ -1,27 +1,33 @@
 package org.example.app.lesson_13
 
 fun main() {
-    val phone1 = Phone(readln(), readln().toLongOrNull(), readln())
-    phone1.checkNameCompany()
-    phone1.checkNumber()
-}
-
-class Phone(
-    val name: String?,
-    val number: Long?,
-    val company: String?,
     val contacts: MutableList<Phone> = mutableListOf()
-) {
+    var counter = 3
 
-    fun checkNumber() {
-        if (number != null) {
-            contacts.add(Phone(name, number, company))
+    while (counter > 0) {
+        val phoneNumber: Long? = readln().toLongOrNull()
+
+        if (phoneNumber != null) {
+            val phone = Phone(readln(), phoneNumber, readln())
+            if (phone.company == "") phone.company = null
+            if (phone.name == "") phone.name = null
+            contacts.add(phone)
         } else {
             println("Вы не ввели номер телефона")
         }
+        counter--
     }
 
-    fun checkNameCompany(): String? {
-        return (company?.ifEmpty { null })
+    contacts.forEach { it.printInfo()}
+}
+
+class Phone(
+    var name: String?,
+    val number: Long?,
+    var company: String?,
+) {
+
+    fun printInfo() {
+        println("$name, $number, $company")
     }
 }
