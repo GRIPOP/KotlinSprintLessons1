@@ -11,7 +11,7 @@ fun main() {
         val phone = PhoneV1(name, number, company)
     }
     catch (e: NumberFormatException) {
-        println("Ошибка: ${e.javaClass.simpleName}")
+        println("Ошибка: ${e::class.simpleName}")
     }
 }
 
