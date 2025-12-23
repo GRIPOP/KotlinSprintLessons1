@@ -1,30 +1,34 @@
 package org.example.app.lesson_14
 
-//В компьютерной игре есть три типа судов: лайнер, грузовой и ледокол.
-//Все суда основаны на базовом классе лайнера, но каждый из них имеет свой функционал и дополнительные свойства.
-//
-//- У грузовых судов скорость меньше, но грузоподъемность больше.
-//- У ледоколов ниже и скорость, и вместительность, но они могут колоть лёд.
-//- Лайнеры могут вмещать наибольшее количество пассажиров.
-
 fun main() {
-    val liner = Liner()
-    val iceBreaker = IceBreaker(50, 100, 50)
-    val cargoShip = CargoShip(100, 500, 100)
+    val liner = Liner("Лайнер")
+    val iceBreaker = IceBreaker("Ледокол")
+    val cargoShip = CargoShip("Грузовой корабль")
 }
 
-open class Liner (val speed: Int  = 150,
-             val loadCapacity: Int = 100,
-             val passengerCapacity: Int = 1000,
-             val breakingIce: Boolean = false,
+open class Liner(
+    open val name: String,
+    open val speed: Int = 150,
+    open val loadCapacity: Int = 100,
+    open val passengerCapacity: Int = 1000,
+    open val breakingIce: Boolean = false,
 )
 
-class IceBreaker(speed: Int,
-                 loadCapacity: Int,
-                 passengerCapacity: Int,
-): Liner(speed, loadCapacity,passengerCapacity, breakingIce = true)
+class IceBreaker(
+    override val name: String,
+) : Liner(
+    name = name,
+    speed = 50,
+    loadCapacity = 300,
+    passengerCapacity = 100,
+    breakingIce = true,
+)
 
-class CargoShip(speed: Int,
-                loadCapacity: Int,
-                passengerCapacity: Int,
-): Liner(speed, loadCapacity,passengerCapacity)
+class CargoShip(
+    override val name: String,
+) : Liner(
+    name = name,
+    speed = 100,
+    loadCapacity = 500,
+    passengerCapacity = 50,
+)
