@@ -1,59 +1,63 @@
 package org.example.app.lesson_14
 
 fun main() {
-    val linerT2 = LinerT2()
-    linerT2.printInformation()
-    val iceBreakerT2 = IceBreakerT2("Ледокол", 50, 100, 50)
+    val liner = LinerT2("Лайнер")
+    liner.printInformation()
+
+    val iceBreakerT2 = IceBreakerT2("Ледокол")
     iceBreakerT2.printInformation()
-    val cargoShipT2 = CargoShipT2("Грузовой корабль", 100, 500, 100)
+
+    val cargoShipT2 = CargoShipT2("Грузовой корабль")
     cargoShipT2.printInformation()
 }
 
-open class LinerT2 (
-    val name: String = "Лайнер",
-    val speed: Int  = 150,
-    val loadCapacity: Int = 100,
-    val passengerCapacity: Int = 1000,
-    val breakingIce: Boolean = false,
-    val loadingMethod: String = "$name выдвигает горизонтальный трап со шкафута"
+open class LinerT2(
+    open val name: String,
+    open val speed: Int = 150,
+    open val loadCapacity: Int = 100,
+    open val passengerCapacity: Int = 1000,
+    open val breakingIce: Boolean = false,
 ) {
 
-    open fun printLoadingMethod() {
-        println(loadingMethod)
+    open fun loadingMethod() {
+        println("$name выдвигает горизонтальный трап со шкафута")
     }
 
-    open fun printInformation() {
-        LinerT2().let {
-            print("Корабль: $name, ")
-            print("Скорость: $speed, ")
-            print("Грузоподъемность: $loadCapacity, ")
-            print("Пассажировместимость: $passengerCapacity, ")
-            print("Возможность колоть лед: $breakingIce, ")
-            println("Способ погрузки - $loadingMethod")
-        }
+    fun printInformation() {
+        println(
+            "Тип корабля - $name, " +
+                    "скорость - $speed, " +
+                    "грузоподъемность - $loadCapacity, " +
+                    "пассожировместимость - $passengerCapacity, " +
+                    "возможность колоть лёд - $breakingIce "
+        )
     }
 }
 
 class IceBreakerT2(
-    name: String,
-    speed: Int,
-    loadCapacity: Int,
-    passengerCapacity: Int,
-): LinerT2(name, speed, loadCapacity,passengerCapacity, breakingIce = true, loadingMethod = "$name открывает ворота со стороны кормы") {
+    override val name: String,
+) : LinerT2(
+    name = name,
+    speed = 50,
+    loadCapacity = 300,
+    passengerCapacity = 100,
+    breakingIce = true,
+) {
 
-    override fun printLoadingMethod() {
-        println(loadingMethod)
+    override fun loadingMethod() {
+        println("$name активирует погрузочный кран")
     }
 }
 
 class CargoShipT2(
-    name: String,
-    speed: Int,
-    loadCapacity: Int,
-    passengerCapacity: Int,
-): LinerT2(name, speed, loadCapacity,passengerCapacity, loadingMethod = "$name активирует погрузочный кран") {
-
-    override fun printLoadingMethod() {
-        println(loadingMethod)
+    override val name: String,
+) : LinerT2(
+    name = name,
+    speed = 100,
+    loadCapacity = 500,
+    passengerCapacity = 50,
+) {
+    override fun loadingMethod() {
+        println("$name открывает ворота со стороны кормы")
     }
 }
