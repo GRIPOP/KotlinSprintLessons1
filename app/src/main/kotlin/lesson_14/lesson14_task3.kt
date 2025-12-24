@@ -3,35 +3,31 @@ package org.example.app.lesson_14
 import kotlin.math.PI
 import java.util.Locale
 
-fun main() {
-    var sumPerimeterBlackFigure: Double = 0.0
-    var sumAreaWhiteFigure: Double = 0.0
-    val blackCircle = Circle("Черный", 10)
-    val whiteCircle = Circle("Белый", 50)
-    val blackRectangle = Rectangle("Черный", 10, 10)
-    val whiteRectangle = Rectangle("Белый", 5, 5)
-    val figure: List<Figure> = listOf(blackCircle, whiteCircle, blackRectangle, whiteRectangle)
+const val WHITE = "Белый"
+const val BLACK = "Черный"
 
-    figure.forEach {
-        when {
-            it.colour == "Белый" -> sumAreaWhiteFigure += it.calculateArea()
-            it.colour == "Черный" -> sumPerimeterBlackFigure += it.calculatePerimeter()
-        }
-    }
+fun main() {
+    val blackCircle = Circle(BLACK, 10)
+    val whiteCircle = Circle(WHITE, 50)
+    val blackRectangle = Rectangle(BLACK, 10, 10)
+    val whiteRectangle = Rectangle(WHITE, 5, 5)
+    val figure: List<Figure> = listOf(blackCircle, whiteCircle, blackRectangle, whiteRectangle)
+    val sumPerimeterBlackFigure = figure.filter { it.colour == BLACK }.sumOf { it.calculatePerimeter() }
+    val sumAreaWhiteFigure = figure.filter { it.colour == WHITE }.sumOf { it.calculateArea() }
 
     println("Сумма площадей всех белых фигур равна: ${String.format(Locale.US, "%.2f", sumAreaWhiteFigure)}")
     println("Сумма периметров всех черных фигур равна: ${String.format(Locale.US, "%.2f", sumPerimeterBlackFigure)}")
 }
 
 abstract class Figure(
-    open val colour: String,
+    val colour: String,
 ) {
     abstract fun calculateArea(): Double
     abstract fun calculatePerimeter(): Double
 }
 
 class Circle(
-    override val colour: String,
+    colour: String,
     val radius: Int,
 ) : Figure(
     colour = colour,
@@ -47,7 +43,7 @@ class Circle(
 }
 
 class Rectangle(
-    override val colour: String,
+    colour: String,
     val width: Int,
     val height: Int,
 ) : Figure(
