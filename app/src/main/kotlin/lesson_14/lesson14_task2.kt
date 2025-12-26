@@ -19,17 +19,19 @@ open class LinerT2(
     open val breakingIce: Boolean = false,
 ) {
 
-    open fun loadingMethod() {
+    open fun loadMethod() {
         println("$name выдвигает горизонтальный трап со шкафута")
     }
 
     fun printInformation() {
         println(
-            "Тип корабля - $name, " +
-                    "скорость - $speed, " +
-                    "грузоподъемность - $loadCapacity, " +
-                    "пассожировместимость - $passengerCapacity, " +
-                    "возможность колоть лёд - $breakingIce "
+            """
+            Тип корабля - $name
+            Скорость - $speed
+            Грузоподъемность - $loadCapacity
+            Пассожировместимость - $passengerCapacity
+            Возможность колоть лёд - $breakingIce
+        """.trimIndent().replace("\n", ", ")
         )
     }
 }
@@ -44,8 +46,8 @@ class IceBreakerT2(
     breakingIce = true,
 ) {
 
-    override fun loadingMethod() {
-        println("$name активирует погрузочный кран")
+    override fun loadMethod() {
+        println("$name открывает ворота со стороны кормы")
     }
 }
 
@@ -57,7 +59,7 @@ class CargoShipT2(
     loadCapacity = 500,
     passengerCapacity = 50,
 ) {
-    override fun loadingMethod() {
-        println("$name открывает ворота со стороны кормы")
+    override fun loadMethod() {
+        println("$name активирует погрузочный кран")
     }
 }
