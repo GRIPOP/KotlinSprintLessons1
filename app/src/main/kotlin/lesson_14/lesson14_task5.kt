@@ -2,19 +2,21 @@ package org.example.app.lesson_14
 
 fun main() {
     val chat = Chat()
-    chat.addMessage("Hello", "User1")
-    chat.addMessage("adsadasdad", "User2")
-    chat.addThreadMessage("Bye", "User3", 1)
-    chat.addThreadMessage("asdas", "User4", 1)
-    chat.addThreadMessage("adsa", "User5", 2)
-    chat.addThreadMessage("adsada", "User6", 2)
+    chat.addMessage("MES1", "User1")
+    chat.addMessage("MES2", "User2")
+    chat.addMessage("MES3", "User8")
+    chat.addMessage("MES4", "User9")
+
+    chat.addThreadMessage("MES1.1", "User3", 1)
+    chat.addThreadMessage("MES1.2", "User4", 1)
+    chat.addThreadMessage("MES2.1", "User5", 2)
+    chat.addThreadMessage("MES2.2", "User6", 2)
 
     chat.printChat()
 }
 
-class Chat() {
-
-    var messagesChat: MutableList<Message> = mutableListOf()
+class Chat {
+    val messagesChat: MutableList<Message> = mutableListOf()
     var idMessage: Int = 1
 
     fun addMessage(text: String, author: String) {
@@ -30,7 +32,17 @@ class Chat() {
     }
 
     fun printChat() {
-        messagesChat.forEach { println(it) }
+        val parentMessage = messagesChat.filter { it !is ChildMessage }
+        val childMessage = messagesChat.filterIsInstance<ChildMessage>().groupBy { it.parentMessageId }
+
+        for (i in parentMessage) {
+            println(i.text)
+            childMessage[i.idMessage]?.let { children ->
+                for (child in children) {
+                    println("\t${child.text}")
+                }
+            }
+        }
     }
 
     open class Message(
@@ -43,6 +55,6 @@ class Chat() {
         text: String,
         idMessage: Int,
         author: String,
-        val parentMessageId: Int?,
+        val parentMessageId: Int,
     ) : Message(text, idMessage, author)
 }
