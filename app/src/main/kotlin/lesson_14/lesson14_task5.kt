@@ -33,14 +33,12 @@ class Chat {
 
     fun printChat() {
         val parentMessage = messagesChat.filter { it !is ChildMessage }
-        val childMessage = messagesChat.filterIsInstance<ChildMessage>().groupBy { it.parentMessageId }
 
-        for (i in parentMessage) {
-            println(i.text)
-            childMessage[i.idMessage]?.let { children ->
-                for (child in children) {
-                    println("\t${child.text}")
-                }
+        for (parent in parentMessage) {
+            println(parent.text)
+            for (child in messagesChat.filterIsInstance<ChildMessage>()
+                .filter { it.parentMessageId == parent.idMessage }) {
+                println("\t${child.text}")
             }
         }
     }
