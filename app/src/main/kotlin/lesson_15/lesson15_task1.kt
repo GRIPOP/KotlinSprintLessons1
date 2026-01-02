@@ -1,9 +1,4 @@
 package org.example.app.lesson_15
-//В мобильной игре есть разные существа. Напиши интерфейсы для летающих и плавающих существ.
-//
-//- создай интерфейсы с методами передвижения для: карась, чайка, утка;
-//- создай для каждого существа классы, реализующие соответствующие интерфейсы;
-//- выведи сообщения в консоль, о том как они могут передвигаться.
 
 fun main() {
     val crucianCarp = CrucianCarp()
@@ -17,30 +12,27 @@ fun main() {
     duck.fly()
 }
 
-interface SwimmingAnimal {
+interface AbilitySwim {
     fun swim()
 }
 
-interface FlyingAnimal {
+interface AbilityFly {
     fun fly()
 }
 
-class CrucianCarp(): SwimmingAnimal {
+class CrucianCarp() : AbilitySwim {
     override fun swim() {
         println("Карась плавает")
     }
 }
 
-class Seagull(): FlyingAnimal {
+class Seagull() : AbilityFly {
     override fun fly() {
         println("Чайка летает")
     }
 }
 
-class Duck(): SwimmingAnimal, FlyingAnimal {
-    fun moveDuck() {
-
-    }
+class Duck() : AbilitySwim, AbilityFly {
     override fun fly() {
         println("Утка летает")
     }
