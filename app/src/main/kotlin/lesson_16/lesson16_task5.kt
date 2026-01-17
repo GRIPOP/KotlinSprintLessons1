@@ -1,26 +1,29 @@
 package org.example.app.lesson_16
 
 fun main() {
-    val player = Player(100, "Stone", 10)
-
-    player.takeDamage(50)
+    val player = Player("Stone", 100, 10)
+    player.takeDamage(15)
     player.toHeal(30)
-    player.takeDamage(40)
-    player.takeDamage(30)
-    player.takeDamage(40)
+    player.takeDamage(100)
+    player.takeDamage(50)
 }
 
-class Player(private var health: Int, val name: String, var impactForce: Int) {
+class Player(val name: String, private var health: Int, var impactForce: Int) {
+    private var isDead = false
 
     fun takeDamage(damage: Int) {
-        health -= damage
-        if (health <= 0) {
+        if (isDead) return
+
+        if (damage >= health) {
+            isDead = true
             death()
+        } else {
+            health -= damage
         }
     }
 
     fun toHeal(addHealth: Int) {
-        health += addHealth
+        if (!isDead) health += addHealth
     }
 
     private fun death() {
