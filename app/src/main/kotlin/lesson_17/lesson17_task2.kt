@@ -9,6 +9,6 @@ class Ship(name: String, val averageSpeed: Int, val port: String) {
 
     var name: String = name
         set(value) {
-            if (value != field) println("Нельзя менять поле name")
+            println("Нельзя менять поле name")
         }
 }
