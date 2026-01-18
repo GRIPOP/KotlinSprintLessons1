@@ -1,22 +1,19 @@
 package org.example.app.lesson_17
 
 fun main() {
-    val packet = Package(1, "Moscow")
+    val packet = PostalParcel(1, "Moscow")
     packet.location = "Kazan"
     println(packet.count)
 }
 
-class Package(
+class PostalParcel(
     val number: Int,
-    location: String = "Distribution point",
+    location: String,
 ) {
     var count = 0
-    var location = location
+    var location: String = location
         set(value) {
+            field = value
             count++
         }
-
-    init {
-        count++
-    }
 }
