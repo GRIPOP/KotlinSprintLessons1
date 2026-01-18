@@ -5,14 +5,15 @@ fun main() {
 }
 
 class Quiz(question: String, answer: String) {
-    val question: String = question
+    var question: String = question
         get() = field
+        set(value) {
+            field = value
+        }
 
     var answer: String = answer
         get() = field
         set(value) {
-            if (value.isBlank()) {
-                println("Ответ не введен")
-            } else field = value
+            field = value
         }
 }
