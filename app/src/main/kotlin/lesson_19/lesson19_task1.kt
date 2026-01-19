@@ -2,12 +2,12 @@ package org.example.app.lesson_19
 
 fun main() {
     println("Список рыб, которых можно добавить в аквариум")
-    Fish.entries.forEach { println(it) }
+    Fish.entries.forEach { println(it.nameFish) }
 }
 
-enum class Fish {
-    GUPPY,
-    ANGEL_FISH,
-    GOLD_FISH,
-    SIAMESE_FIGHTING_FISH,
+enum class Fish(val nameFish: String) {
+    GUPPY("Гуппи"),
+    ANGEL_FISH("Скалярия"),
+    GOLD_FISH("Золотая рыбка"),
+    SIAMESE_FIGHTING_FISH("Петушок"),
 }
