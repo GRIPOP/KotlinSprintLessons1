@@ -7,14 +7,14 @@ fun main() {
     ship.shootAtTheAsteroid()
 }
 
-class Ship() {
+class Ship {
 
     fun takeOff() {
-        TODO("Need information about adding logic")
+        TODO()
     }
 
     fun land() {
-        TODO()
+        // TODO("Need information about adding logic")
     }
 
     fun shootAtTheAsteroid() {}
