@@ -2,27 +2,28 @@ package org.example.app.lesson_19
 
 fun main() {
     val tank = Tank()
-
-    tank.raiseNewPatron(Patron.RED)
-    tank.raiseNewPatron(Patron.BLUE)
-    tank.shoot(Patron.RED)
-    tank.shoot(Patron.BLUE)
+    println(tank.raiseNewPatron(Patron.RED))
+    tank.shoot()
+    tank.shoot()
+    println(tank.raiseNewPatron(Patron.BLUE))
+    tank.shoot()
+    tank.shoot()
 }
 
-enum class Patron(val colorPatron: String, val impactForce: Int) {
-    BLUE("Синий", 5),
-    GREEN("Зеленый", 10),
-    RED("Красный", 20)
+enum class Patron(val impactForce: Int) {
+    BLUE(5),
+    GREEN(10),
+    RED(20),
 }
 
-class Tank(val patrons: MutableSet<Patron> = mutableSetOf()) {
+class Tank(private var currentAmmo: Patron? = null) {
 
     fun raiseNewPatron(patron: Patron) {
-        println("Подняли патрон $patron")
-        patrons.add(patron)
+        currentAmmo = patron
     }
 
-    fun shoot(colorPatron: Patron) {
-        println("Нанесенный урон - ${colorPatron.impactForce} единиц")
+    fun shoot() {
+        println("Нанесенный урон - ${currentAmmo?.impactForce ?: "Урона нет. Танк ничем не заряжен"}")
+        currentAmmo = null
     }
 }
