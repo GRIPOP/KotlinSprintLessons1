@@ -9,7 +9,7 @@ fun main() {
 
 class Player(val name: String, var currentHealth: Int, val maxHealth: Int)
 
-val heal: (player: Player) -> Int = {
+val heal: (Player) -> Int = {
     it.currentHealth = it.maxHealth
     it.currentHealth
 }
