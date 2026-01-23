@@ -2,14 +2,17 @@ package org.example.app.lesson_20
 
 fun main() {
     val player = Player()
-    val openDoor: (Player) -> Unit = {
+    val player2 = Player(true)
+    val openDoor: (Player) -> String = {
         if (it.isHaveKey) {
-            println("Игрок открыл дверь")
+            "Игрок открыл дверь"
         } else {
-            println("Дверь заперта")
+            "Дверь заперта"
         }
     }
-    openDoor(player)
+
+    println(openDoor(player))
+    println(openDoor(player2))
 }
 
 class Player(var isHaveKey: Boolean = false)
