@@ -6,5 +6,5 @@ fun main() {
         { println("Нажат элемент $it") }
     }
 
-    lambdaList.forEach { if (lambdaList.indexOf(it) % 2 == 0) it() }
+    lambdaList.forEachIndexed { index, value -> if ((index + 1) % 2 == 0) value() }
 }
