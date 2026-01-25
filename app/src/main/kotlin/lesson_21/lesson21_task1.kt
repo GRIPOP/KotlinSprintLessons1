@@ -2,16 +2,15 @@ package org.example.app.lesson_21
 
 fun main() {
     val word = "Hello"
-    val vowels = "аеёиоуыэюяaeiou"
+    println(word.vowelCount())
+}
+
+fun String.vowelCount(): Int {
     var count = 0
-
-    fun String.vowelCount() {
-        for (i in this) {
-            if (i.lowercase() in vowels) count++
-        }
-
-        println("Гласных букв в слове - $count")
+    val vowels = "аеёиоуыэюяaeiou"
+    for (i in this) {
+        if (i.lowercase() in vowels) count++
     }
 
-    word.vowelCount()
+    return count
 }
