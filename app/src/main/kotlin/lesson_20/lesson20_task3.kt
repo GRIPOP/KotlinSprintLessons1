@@ -1,9 +1,9 @@
 package org.example.app.lesson_20
 
 fun main() {
-    val player = Player()
-    val player2 = Player(true)
-    val openDoor: (Player) -> String = {
+    val player = Player1()
+    val player2 = Player1(true)
+    val openDoor: (Player1) -> String = {
         if (it.isHaveKey) {
             "Игрок открыл дверь"
         } else {
@@ -15,4 +15,4 @@ fun main() {
     println(openDoor(player2))
 }
 
-class Player(var isHaveKey: Boolean = false)
+class Player1(var isHaveKey: Boolean = false)
