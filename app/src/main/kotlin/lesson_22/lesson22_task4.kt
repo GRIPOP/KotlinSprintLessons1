@@ -1,16 +1,21 @@
 package org.example.app.lesson_22
 
 fun main() {
-
+    val viewModel = MainScreenViewModel()
+    println(viewModel.mainScreenState.data)
+    viewModel.loadData()
+    println(viewModel.mainScreenState.data)
 
 }
 
-class MainScreenViewModel(val mainScreenState: MainScreenState) {
+class MainScreenViewModel() {
+    var mainScreenState: MainScreenState = MainScreenState()
+
     fun loadData() {
 
     }
 
-    data class MainScreenState(var data: String, var isLoading: Boolean = false) {
+    data class MainScreenState(val data: String = "отсутствие данных", val isLoading: Boolean = false) {
 
     }
 }
