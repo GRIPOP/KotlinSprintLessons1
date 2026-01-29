@@ -7,8 +7,8 @@ fun main() {
     val book3 = DataBook("1Q84", "Харуки Мураками")
     val book4 = DataBook("1Q84", "Харуки Мураками")
 
-    println(book.equals(book2))
-    println(book3.equals(book4))
+    println(book == book2)
+    println(book3 == book4)
     /*
         У нас два случая:
         1) Сравнение объектов обычного класса. 
@@ -17,9 +17,10 @@ fun main() {
            
         2) Сравнение объектов ДАТА класса. 
            Метод equals() сравнивает объекты по значению их свойств.
-           Поэтому на экране мы видим true, так как у этих объектов одинаковые свойства свойства.
+           Поэтому на экране мы видим true, так как у этих объектов одинаковые свойства.
     */
 }
 
 class RegularBook(val name: String, val author: String)
+
 data class DataBook(val name: String, val author: String)
