@@ -2,10 +2,12 @@ package org.example.app.lesson_22
 
 fun main() {
     val viewModel = MainScreenViewModel()
-    println(viewModel.mainScreenState.data)
-    viewModel.loadData()
-    println(viewModel.mainScreenState.data)
 
+    println(viewModel.mainScreenState)
+    viewModel.loadData()
+    println(viewModel.mainScreenState)
+    viewModel.loadData()
+    println(viewModel.mainScreenState)
 }
 
 class MainScreenViewModel() {
@@ -13,9 +15,14 @@ class MainScreenViewModel() {
 
     fun loadData() {
 
+        mainScreenState.data = readln()
+        mainScreenState = when (mainScreenState.data) {
+            "загрузка данных" -> mainScreenState.copy(isLoading = true)
+            "наличие загруженных данных" -> mainScreenState.copy(isLoading = false)
+            else -> mainScreenState.copy()
+        }
     }
 
-    data class MainScreenState(val data: String = "отсутствие данных", val isLoading: Boolean = false) {
-
-    }
+    data class MainScreenState(var data: String = "отсутствие данных", val isLoading: Boolean = false)
 }
+
