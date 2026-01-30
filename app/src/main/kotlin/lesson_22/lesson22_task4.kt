@@ -15,7 +15,7 @@ class MainScreenViewModel() {
 
     fun loadData() {
 
-        mainScreenState.data = readln()
+        mainScreenState.data = readln().lowercase()
         mainScreenState = when (mainScreenState.data) {
             "загрузка данных" -> mainScreenState.copy(isLoading = true)
             "наличие загруженных данных" -> mainScreenState.copy(isLoading = false)
