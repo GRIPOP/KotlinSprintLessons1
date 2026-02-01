@@ -15,14 +15,13 @@ class MainScreenViewModel() {
 
     fun loadData() {
 
-        mainScreenState.data = readln().lowercase()
-        mainScreenState = when (mainScreenState.data) {
-            "загрузка данных" -> mainScreenState.copy(isLoading = true)
-            "наличие загруженных данных" -> mainScreenState.copy(isLoading = false)
-            else -> mainScreenState.copy()
+        mainScreenState = when (val newData = readln().lowercase()) {
+            "загрузка данных" -> mainScreenState.copy(data = newData, isLoading = true)
+            "наличие загруженных данных" -> mainScreenState.copy(data = newData, isLoading = false)
+            else -> mainScreenState
         }
     }
 
-    data class MainScreenState(var data: String = "отсутствие данных", val isLoading: Boolean = false)
+    data class MainScreenState(val data: String = "отсутствие данных", val isLoading: Boolean = false)
 }
 
